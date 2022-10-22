@@ -12,4 +12,4 @@ class OpenCommand(Command):
         bookmark.filepath = args[0]
         with open(args[0], mode='r', encoding='utf-8', errors='ignore') as file:
             bookmark.content = file.readlines()
-            bookmark.treeview.construct(list(map(lambda x: x.replace('\n', ''), file.readlines())))
+            bookmark.treeview.construct(list(map(lambda x: x.replace('\n', ''), bookmark.content)))

@@ -8,5 +8,5 @@ class ShowTreeCommand(Command):
     def __init__(self) -> None:
         super().__init__()
         
-    def exec(instance: Bookmark, *args) -> None:
-        return super().exec(*args)
+    def exec(self, instance: Bookmark, *args) -> None:
+        instance.treeview.display()

@@ -14,11 +14,10 @@ def getCommand(prompt: str='请输入命令') -> None:
     except Exception as e:
         print('命令错误，请重试')
     module.exec(bookmark, *args)
-    bookmark.treeview.display()
 
 def main() -> None:
     while True:
-        getCommand(bookmark.filename)
+        getCommand(bookmark.filepath)
 
 if __name__ == '__main__':
     main()

@@ -8,5 +8,5 @@ class UndoCommand(Command):
     def __init__(self) -> None:
         super().__init__()
         
-    def exec(instance: Bookmark, *args) -> None:
+    def exec(self, instance: Bookmark, *args) -> None:
         return super().exec(*args)

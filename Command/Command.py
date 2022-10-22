@@ -8,5 +8,5 @@ class Command(object):
     __metaclass__ = ABCMeta
     
     @abstractmethod
-    def exec(instance: Bookmark, *args) -> None:
+    def exec(self, instance: Bookmark, *args) -> None:
         raise NotImplementedError()

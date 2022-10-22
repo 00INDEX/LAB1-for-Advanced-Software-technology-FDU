@@ -20,6 +20,10 @@ class FileTreeView(TreeView):
             self._key = re.findall(r'\[(.*?)\]', content[0])[0]
             self._value = re.findall(r'\((.*?)\)', content[0])[0]
             return
+        if len(content) == 1 and content[0].startswith(' '):
+            self._key = content.pop(0)
+            self._key = self._key.replace(' ', '')
+            return
         if content[0].startswith(' '):
             self._key = content.pop(0)
             self._key = self._key.replace(' ', '')
@@ -39,7 +43,7 @@ class FileTreeView(TreeView):
                 childrenContent.append(line)
             
         if len(childrenContent) != 0:
-            self._children.append(FileTreeView(list(map(lambda x: x.replace('#', ''), childrenContent))))
+            self._children.append(FileTreeView(list(map(lambda x: x[1:] if x.startswith('#') else x, childrenContent))))
     
         
     @property

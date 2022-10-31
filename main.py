@@ -17,6 +17,7 @@ def getCommand(prompt: str='请输入命令') -> None:
         
     except Exception as e:
         print('命令错误，请重试')
+        
     if(command.split()[0].startswith("Und"))
         args.append(Undo_command)
         redo_command = undo_command

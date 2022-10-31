@@ -8,8 +8,8 @@ bookmark = Bookmark()
 def getCommand(prompt: str='请输入命令') -> None:
     command: str = input(f'[{prompt}]>')
     args: List[str] = command.split()[1:]
-    undo_command : str#记录上次执行的add、del操作
-    redo_command : str#记录上次执行的undo操作
+    undo_command : str = ''#记录上次执行的add、del操作
+    redo_command : str = ''#记录上次执行的undo操作
     try:
         if(command.split()[0].startswith("Add") or command.split()[0].startswith("Del"))
             undo_command = command

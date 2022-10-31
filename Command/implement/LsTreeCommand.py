@@ -1,7 +1,11 @@
 import sys
+
+from TreeView.implement.DictTreeView import DictTreeView
 sys.path.append("..")
 from Bookmark import Bookmark
 from Command import Command
+
+import os
 
 class LsTreeCommand(Command):
     command = 'ls-tree'
@@ -9,4 +13,6 @@ class LsTreeCommand(Command):
         super().__init__()
         
     def exec(self, instance: Bookmark, *args) -> None:
-        return super().exec(*args)
+        dictTreeView =  DictTreeView()
+        dictTreeView.construct(os.path.split(os.path.abspath(instance.filepath))[0])
+        dictTreeView.display()

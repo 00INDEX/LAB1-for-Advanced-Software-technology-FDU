@@ -44,3 +44,7 @@ class TreeView(object):
     @property
     def children(self):
         return self._children
+
+    @children.setter
+    def children(self, children):
+        self._children = children

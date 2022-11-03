@@ -13,6 +13,7 @@ def getCommand(prompt: str='请输入命令') -> None:
     try:
         if(command.split()[0].startswith("add") or command.split()[0].startswith("del"))
             undo_command = command
+            redo_command = ''
         module: Command = commands[command.split()[0]]()
         
     except Exception as e:

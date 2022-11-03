@@ -18,8 +18,6 @@ class DeleteTitleCommand(Command):
         dkey = dlist[1:-1]
 
         def findnode(treenode: FileTreeView = tree, level: int = 0):
-            # if flag == True:
-            #     return False
             if level > 0:
                 if dkey == treenode.key:
                     treenode.children = [] # 清空title下的子节点
@@ -36,7 +34,3 @@ class DeleteTitleCommand(Command):
             return [False, False]
 
         findnode()
-
-        #tree.display()
-
-        # return super().exec(*args)

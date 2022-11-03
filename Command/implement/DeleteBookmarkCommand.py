@@ -2,9 +2,7 @@ import sys
 sys.path.append("..")
 from Bookmark import Bookmark
 from Command import Command
-from TreeView import TreeView
 from TreeView import FileTreeView
-from typing import List
 
 class DeleteBookmarkCommand(Command):
     command = 'delete-bookmark'
@@ -20,12 +18,8 @@ class DeleteBookmarkCommand(Command):
         dkey = dlist[1:-1]
 
         def findnode(treenode: FileTreeView = tree, level: int = 0):
-            # if flag == True:
-            #     return False
             if level > 0:
                 if dkey == treenode.key:
-                    # dindex = tree.index(treenode)
-                    # tree.pop(dindex)
                     return [True, True]  # 2个True代表可以删除，并退出程序
             if len(treenode.children) == 0:
                 return [False, False]
@@ -39,8 +33,3 @@ class DeleteBookmarkCommand(Command):
             return [False, False]
 
         findnode()
-
-        #tree.display()
-        #instance.treeview.children(tree)
-
-        # return super().exec(*args)

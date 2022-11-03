@@ -6,10 +6,12 @@ sys.path.append(BASE_DIR)
 
 from Bookmark import Bookmark
 from Command.implement.OpenCommand import OpenCommand
+from Command.implement.ShowTreeCommand import ShowTreeCommand
 
-def test_open_command():
+def test_show_tree_command():
     bookmark = Bookmark()
     command = OpenCommand()
     command.exec(bookmark, BASE_DIR + './test/Command/implement/bookmark.bmk')
-    assert bookmark.treeview.children[0].key == '文件夹' and bookmark.treeview.children[0].children[1].children[1].children[0].key == '书签3'
+    command = ShowTreeCommand()
+    command.exec(bookmark)
     

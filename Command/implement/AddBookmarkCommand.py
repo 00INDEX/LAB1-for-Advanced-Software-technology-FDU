@@ -4,7 +4,7 @@ from Bookmark import Bookmark
 from Command import Command
 
 class AddBookmarkCommand(Command):
-    command = 'add-title'
+    command = 'add-bookmark'
     def __init__(self) -> None:
         super().__init__()
         

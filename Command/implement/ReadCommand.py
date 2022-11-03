@@ -4,6 +4,8 @@ from TreeView import TreeView
 import sys
 sys.path.append("..")
 
+import webbrowser
+
 
 class ReadCommand(Command):
     command = 'read'
@@ -24,6 +26,7 @@ class ReadCommand(Command):
         """
         if treeview.key == readObj:
             treeview.read = True
+            webbrowser.open(treeview.value)
 
         for child in treeview.children:
             self._dfs(child, readObj)

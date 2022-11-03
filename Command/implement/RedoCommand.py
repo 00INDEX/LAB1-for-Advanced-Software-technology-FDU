@@ -2,6 +2,7 @@ import sys
 sys.path.append("..")
 from Bookmark import Bookmark
 from Command import Command
+from .. import commands
 
 class RedoCommand(Command):
     command = 'redo'
@@ -9,19 +10,14 @@ class RedoCommand(Command):
         super().__init__()
         
     def exec(self, instance: Bookmark, *args) -> None:
-        if(len(args) != 1):
-            print('There is no Add or Del operation to Redo')
-            return
-        #args: List[str] = command.split()[1:]
-        #command.split()[0]
-        
-        if(command.split()[0] == "add-title")
-            #add-title function
-        if(command.split()[0] == "add-bookmark")
-            #add-bookmark function
-        if(command.split()[0] == "delete-title")
-            #del-title function
-        if(command.split()[0] == "delete-bookmark")
-            #del-bookmark function
-            
-        return
+        if len(instance.history) == instance.history_setp + 1:
+            print('当前没有可以进行重做的操作')
+        else:
+            hostory_command = instance.redo()
+            hostory_args = hostory_command.split()[1:]
+            if 'add' in hostory_command:
+                hostory_command = hostory_command.replace('add', 'delete')
+            else:
+                hostory_command = hostory_command.replace('delete', 'add')
+            module = commands[hostory_command.split()[0]]
+            module.exec(instance=instance, *hostory_args)

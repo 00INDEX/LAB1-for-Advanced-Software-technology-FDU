@@ -2,6 +2,7 @@ import sys
 sys.path.append("..")
 from Bookmark import Bookmark
 from Command import Command
+from .. import commands
 
 class UndoCommand(Command):
     command = 'undo'
@@ -9,20 +10,14 @@ class UndoCommand(Command):
         super().__init__()
         
     def exec(self, instance: Bookmark, *args) -> None:
-        if(len(args) != 1):
-            print('There is no Add or Del operation to Undo')
-            return
-        #args: List[str] = command.split()[1:]
-        #command.split()[0]
-        if(command.split()[0] == "add-title")
-            #del-title function
-        if(command.split()[0] == "add-bookmark")
-            #del-bookmark function
-        if(command.split()[0] == "delete-title")
-            #add-title function
-        if(command.split()[0] == "delete-bookmark")
-            #add-bookmark function
-        
-        
-        
-        return 
+        if len(instance.history) == 0:
+            print('当前没有可以进行撤销的操作')
+        else:
+            hostory_command = instance.undo()
+            hostory_args = hostory_command.split()[1:]
+            if 'add' in hostory_command:
+                hostory_command = hostory_command.replace('add', 'delete')
+            else:
+                hostory_command = hostory_command.replace('delete', 'add')
+            module = commands[hostory_command.split()[0]]
+            module.exec(instance=instance, *hostory_args)

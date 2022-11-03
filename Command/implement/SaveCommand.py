@@ -15,7 +15,7 @@ class SaveCommand(Command):
         """save bookmark to .bmk file
         """
         lines = self._dfs(instance.treeview, 0)
-        with open(instance.filepath, "w") as f:
+        with open(instance.filepath, "w", encoding='utf-8') as f:
             f.writelines(lines)
 
     def _dfs(self, treeview: TreeView, depth: int) -> str:
@@ -23,7 +23,7 @@ class SaveCommand(Command):
             if treeview.key=="":
                 lines = []
             else:
-                lines = [depth*"#"+treeview.key+"\n"]
+                lines = [depth*"#"+ " " +treeview.key+"\n"]
         else: #bookmark,leaf node
             lines = f"[{treeview.key}]({treeview.value})\n"
             return lines

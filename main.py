@@ -12,8 +12,9 @@ def getCommand(prompt: str='请输入命令') -> None:
     if True:
         module: Command = commands[command.split()[0]]()
         module.exec(bookmark, *args)
-        if command.split()[0].startswith('add') or command.split()[0].startswith('del'):
-            bookmark.do(command)
+        if not command.split()[0].startswith("show") and not command.split()[0].startswith("save") and not command.split()[0].startswith("ls") \
+            and not command.split()[0].startswith("undo") and not command.split()[0].startswith("redo"):
+            bookmark.do()
     # except Exception as e:
     #     print('命令错误，请重试')
     

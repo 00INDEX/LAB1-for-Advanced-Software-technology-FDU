@@ -46,5 +46,5 @@ class TreeView(object):
         return self._children
 
     @children.setter
-    def children(self, children):
+    def children(self, children): # 好像不需要这个
         self._children = children
